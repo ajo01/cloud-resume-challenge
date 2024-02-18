@@ -1,0 +1,51 @@
+:root {
+  --highlight: #3bb8d5;
+  --darkHighlight: rgb(5, 167, 196);
+}
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--darkHighlight);
+  font-size: 1.1rem;
+}
+
+.container {
+  margin: auto;
+  width: 70%;
+  padding: 80px 0 100px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+}
+
+.contact {
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.heading {
+  font-size: 2rem;
+}
+
+.subheading {
+  font-size: 1.5rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--highlight);
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-top: 10px;
+  padding-left: 15px;
+}
