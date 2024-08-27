@@ -18,11 +18,11 @@ To be updated
 - [x] Source Control
 - [x] CI/CD Frontend
 
-- [] Tests
-- [] Infrastructure as Code
-- [] Blog Post
+- [ ] Tests
+- [ ] Infrastructure as Code
+- [ ] Blog Post
 
-Tech Stack:
+## Tech Stack:
 
 - S3
 - CloudFront
