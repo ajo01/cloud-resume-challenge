@@ -3,8 +3,9 @@
 I documented my attempt at this challenge. Read more about the challenge [here](https://cloudresumechallenge.dev/docs/the-challenge/aws/).
 
 ## Architecture Diagram
+![awsdiagram](https://github.com/user-attachments/assets/611db14b-5e75-4d32-968e-45d70f41f837)
 
-To be updated
+
 
 ## [Demo](https://amyjo.cloud/)
 
