@@ -8,6 +8,5 @@ resource "aws_route53_zone" "resume_zone" {
 resource "aws_route53_record" "resume_record" {
   zone_id = aws_route53_zone.resume_zone.id
   name    = "www.amyjo.cloud"
-  type    = "A"
 
 }
