@@ -1,25 +1,37 @@
 resource "aws_s3_bucket" "resume_bucket" {
-  
   bucket = "www.amyjo.cloud"
-  acl    = "public-read"
-  
-  cors_rule {
-    allowed_headers = ["*"]
-    allowed_methods = ["GET","HEAD"]
-    allowed_origins = ["*"]
-    expose_headers  = [""]
-  }
-
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-
-  }
 
   lifecycle {
     prevent_destroy = true
   }
+}
 
+resource "aws_s3_bucket_acl" "resume_bucket_acl" {
+  bucket = aws_s3_bucket.resume_bucket.id
+  acl    = "public-read"
+}
+
+resource "aws_s3_bucket_website_configuration" "resume_bucket_website" {
+  bucket = aws_s3_bucket.resume_bucket.id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "index.html"
+  }
+}
+
+resource "aws_s3_bucket_cors_configuration" "resume_bucket_cors" {
+  bucket = aws_s3_bucket.resume_bucket.id
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_origins = ["*"]
+    expose_headers  = [""]
+  }
 }
 
 
