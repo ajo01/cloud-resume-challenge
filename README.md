@@ -123,7 +123,7 @@ I migrated the resources to Terraform by configuring the files, `terraform impor
 
 ### Step 11 - Frontend CI/CD Workflow
 
-I setup a CI/CD workflow with Github Actions so that upon every push on Git, the code will build and sync to the S3 bucket.
+I setup a CI/CD workflow with Github Actions so that upon every push on Git, the code will build and sync to the S3 bucket. AWS credentials were stored in GitHub Secrets.
 
 ### Step 12 - Backend CI/CD Workflow
 
