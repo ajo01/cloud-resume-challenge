@@ -21,7 +21,6 @@ Here I have documented my attempt at this challenge. Read more about the challen
 - [x] Infrastructure as Code
 
 - [ ] Tests
-- [ ] Blog Post
 
 ## Tech Stack:
 
@@ -34,7 +33,7 @@ Here I have documented my attempt at this challenge. Read more about the challen
 - GitHub Actions
 - Terraform
 
-## Guide
+## How-To Guide
 
 ### Step 0 - Certification
 
@@ -97,7 +96,9 @@ I setup a CI/CD workflow with Github Actions so upon every push on Git, the code
 I automated infrastructure with [Terraform](https://www.terraform.io/).
 
 `terraform init` initializes Terraform configuration files
+
 `terraform apply` deploys the specified resources
+
 `terraform destroy` destroys all resources specified in Terraform's configuration files
 
 ### Step 12 - Backend CI/CD Workflow
