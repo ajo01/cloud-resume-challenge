@@ -19,8 +19,7 @@ Here I have documented my attempt at this challenge. Read more about the challen
 - [x] Source Control
 - [x] CI/CD Frontend
 - [x] Infrastructure as Code
-
-- [ ] Tests
+- [x] Tests
 
 ## Tech Stack:
 
@@ -81,7 +80,7 @@ I provisioned a DynamoDB table with the attribute key and views.
 
 ### Step 8 - Visit Counting with AWS Lambda
 
-I created an AWS Lambda function with the AWS SDK for Python, Boto3. The function updates the view attribute in the dynamodb table and returns the number of views. Function URL was enabled so that we could request the URL directly instead of provisioning an API Gateway.
+I created an AWS Lambda function with the AWS SDK for Python, Boto3. The function updates the view attribute in the dynamodb table and returns the number of views. Function URL was enabled so that we could request the URL directly instead of provisioning an API Gateway. This Lambda function was also allowed to assume an IAM role that had permissions to access DynamoDB.
 
 ### Step 9 - Update Website with Visit Counter
 
@@ -108,4 +107,6 @@ I setup a CI/CD workflow with Github Actions so upon every approved merge reques
 
 ### Step 13 - Automated Testing
 
-To be continued...
+I setup automated testing with Jest and Supertest to ensure the Visit Count Lambda function was running correctly.
+
+`npx jest aws.test.js`
