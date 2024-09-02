@@ -43,11 +43,11 @@ I was certified on May 2022 and January 2024 respectively, which can be verified
 
 ### Step 1 - Frontend
 
-Every year I rebuild my portfolio website. For 2024, I redesigned my website with React and this was the app I used as my frontend for this challenge.
+Every year I rebuild my portfolio website. For 2024, I had already redesigned my website with React and this was the app I used as my frontend for this challenge.
 
 ### Step 2 - Deploy Website to AWS S3 Bucket
 
-Since my app was built with React, I generated static files by running 'npm run build'. The build folder was uploaded to the S3 bucket named www.amyjo.cloud.
+Since my app was built with React, I generated static files by running `npm run build`. The build folder was uploaded to the S3 bucket named www.amyjo.cloud.
 
 The S3 bucket's files looks like this:
 
@@ -76,5 +76,30 @@ To enable HTTPS, I requested a certificate in AWS ACM for the domain names www.a
 
 I transferred my domain to AWS's domain name service (DNS) Route53. I first created a public hosted zone within Route53 with the domain name www.amyjo.cloud then changed nameservers at Godaddy to use Route53's nameservers.
 
-### Step 7 - Visit Counting with AWS Lambda
+### Step 7 - Visit Counting with DyanmoDB
+
+I provisioned a DynamoDB table with the attribute key and views.
+
+### Step 8 - Visit Counting with AWS Lambda
+
+I created an AWS Lambda function with the AWS SDK for Python, Boto3. The function updates the view attribute in the dynamodb table and returns the number of views. Function URL was enabled so that we could request the URL directly instead of provisioning an API Gateway.
+
+### Step 9 - Update Website with Visit Counter
+
+I updated the website to fetch the Lambda function URL and display the number of views.
+
+### Step 10 - Frontend CI/CD Workflow
+
+I setup a CI/CD workflow with Github Actions so upon every push on Git, the code will build and sync to the S3 bucket.
+
+### Step 11 - Infrastructure as Code
+
+I automated infrastructure with [Terraform](https://www.terraform.io/).
+
+`terraform init` initializes Terraform configuration files
+`terraform apply` deploys the specified resources
+`terraform destroy` destroys all resources specified in Terraform's configuration files
+
+### Step 12 - Backend CI/CD Workflow
+
 To be continued...
