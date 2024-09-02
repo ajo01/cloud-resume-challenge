@@ -1,7 +1,7 @@
 # AWS Cloud Resume Challenge
 
 The Cloud Resume Challenge is a hands-on project designed to develop practical cloud skills. Steps involve automated testing, building CI/CD pipelines, database integration, DNS configuration, templating infrastructure as code, and more.
-Here I have documented my attempt at this challenge. Read more about the challenge [here](https://cloudresumechallenge.dev/docs/the-challenge/aws/).
+Read more about the challenge [here](https://cloudresumechallenge.dev/docs/the-challenge/aws/).
 
 ## Architecture Diagram
 
