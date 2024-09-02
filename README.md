@@ -18,9 +18,9 @@ I documented my attempt at this challenge. Read more about the challenge [here](
 - [x] Lambda and DynamoDB for Visit Counter
 - [x] Source Control
 - [x] CI/CD Frontend
+- [x] Infrastructure as Code
 
 - [ ] Tests
-- [ ] Infrastructure as Code
 - [ ] Blog Post
 
 ## Tech Stack:
@@ -32,6 +32,7 @@ I documented my attempt at this challenge. Read more about the challenge [here](
 - AWS Lambda
 - Dynamo DB
 - GitHub Actions
+- Terraform
 
 ## Guide
 
