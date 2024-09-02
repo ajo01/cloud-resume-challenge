@@ -4,9 +4,9 @@ resource "aws_lambda_function" "viewcounter" {
   handler       = "index.handler"
   runtime       = "python3.8"
 
-  filename      = "visit_counter_function.zip"
+  filename      = "index.zip"
 
-  source_code_hash = filebase64sha256("visit_counter_function.zip")
+  source_code_hash = filebase64sha256("index.zip")
 }
 
 resource "aws_iam_role" "lambda_role" {
@@ -31,6 +31,7 @@ resource "aws_iam_role_policy_attachment" "lambda_dynamodb_access" {
 }
 
 
+# for logging
 resource "aws_iam_policy" "lambda_policy" {
   name        = "lambda-execution-policy"
   description = "Policy for Lambda execution"
