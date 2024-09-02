@@ -87,13 +87,10 @@ I created an AWS Lambda function with the AWS SDK for Python, Boto3. The functio
 
 I updated the website to fetch the Lambda function URL and display the number of views.
 
-### Step 10 - Frontend CI/CD Workflow
-
-I setup a CI/CD workflow with Github Actions so upon every push on Git, the code will build and sync to the S3 bucket.
-
-### Step 11 - Infrastructure as Code
+### Step 10 - Infrastructure as Code
 
 I automated infrastructure with [Terraform](https://www.terraform.io/).
+I migrated the resources to Terraform by configurating the files, `terraform importing` the resources, and using `terraform plan` to carefully observe changes.
 
 `terraform init` initializes Terraform configuration files
 
@@ -101,6 +98,14 @@ I automated infrastructure with [Terraform](https://www.terraform.io/).
 
 `terraform destroy` destroys all resources specified in Terraform's configuration files
 
+### Step 11 - Frontend CI/CD Workflow
+
+I setup a CI/CD workflow with Github Actions so upon every push on Git, the code will build and sync to the S3 bucket.
+
 ### Step 12 - Backend CI/CD Workflow
+
+I setup a CI/CD workflow with Github Actions so upon every approved merge request, Terraform will update remote resources.
+
+### Step 13 - Automated Testing
 
 To be continued...
