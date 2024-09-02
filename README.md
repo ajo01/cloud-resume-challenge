@@ -62,7 +62,7 @@ Static website hosting was enabled and index.html was set as the index document.
 
 I bought the custom domain name amyjo.cloud through Godaddy. In Godaddy's DNS configuration settings, I updated the CNAME records with the S3 bucket name.
 
-### Step 4 - Cloudfront CDNm Distribution
+### Step 4 - Cloudfront CDN Distribution
 
 I created a Cloudfront content delivery network to speed up the distribution of my website. The origin domain was set to the S3 bucket, the domain name to www.amyjo.cloud, and subdomain name to amyjo.cloud.
 
@@ -78,9 +78,33 @@ I transferred my domain to AWS's domain name service (DNS) Route53. I first crea
 
 I provisioned a DynamoDB table with the attribute key and views.
 
+| Key        | Views           |
+| ------------- |:-------------:|
+| String      | Number |
+
 ### Step 8 - Visit Counting with AWS Lambda
 
 I created an AWS Lambda function with the AWS SDK for Python, Boto3. The function updates the view attribute in the dynamodb table and returns the number of views. Function URL was enabled so that we could request the URL directly instead of provisioning an API Gateway. This Lambda function was also allowed to assume an IAM role that had permissions to access DynamoDB.
+
+```python
+import boto3
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('cloudresume')
+
+def handler(event, context):
+    response = table.get_item(Key={
+        'id':'1'
+    })
+    views = response['Item']['views']
+    views += 1
+    response = table.put_item(Item={
+            'id':'1',
+            'views': views
+    })
+
+    return views
+```
 
 ### Step 9 - Update Website with Visit Counter
 
@@ -89,7 +113,7 @@ I updated the website to fetch the Lambda function URL and display the number of
 ### Step 10 - Infrastructure as Code
 
 I automated infrastructure with [Terraform](https://www.terraform.io/).
-I migrated the resources to Terraform by configurating the files, `terraform importing` the resources, and using `terraform plan` to carefully observe changes.
+I migrated the resources to Terraform by configuring the files, `terraform importing` the resources and using `terraform plan` to carefully observe changes.
 
 `terraform init` initializes Terraform configuration files
 
@@ -99,7 +123,7 @@ I migrated the resources to Terraform by configurating the files, `terraform imp
 
 ### Step 11 - Frontend CI/CD Workflow
 
-I setup a CI/CD workflow with Github Actions so upon every push on Git, the code will build and sync to the S3 bucket.
+I setup a CI/CD workflow with Github Actions so that upon every push on Git, the code will build and sync to the S3 bucket.
 
 ### Step 12 - Backend CI/CD Workflow
 
