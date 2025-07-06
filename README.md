@@ -78,9 +78,9 @@ I transferred my domain to AWS's domain name service (DNS) Route53. I first crea
 
 I provisioned a DynamoDB table with the attribute key and views.
 
-| Key        | Views           |
-| ------------- |:-------------:|
-| String      | Number |
+| Key    | Views  |
+| ------ | :----: |
+| String | Number |
 
 ### Step 8 - Visit Counting with AWS Lambda
 
@@ -121,6 +121,8 @@ I migrated the resources to Terraform by configuring the files, `terraform impor
 
 `terraform destroy` destroys all resources specified in Terraform's configuration files
 
+- May have to delete S3 resources manually before destroying
+
 ### Step 11 - Frontend CI/CD Workflow
 
 I setup a CI/CD workflow with Github Actions so that upon every push on Git, the code will build and sync to the S3 bucket. AWS credentials were stored in GitHub Secrets.
@@ -136,10 +138,9 @@ I setup automated testing with Jest and Supertest to ensure the Visit Count Lamb
 `npx jest aws.test.js`
 
 ## Challenges
+
 Due to how Cloudfront and DNS routing works, sometimes it took up to 24 hours for any changes in code or domain name to appear. This is still the case for any code pushes in the frontend app, making it difficult to validate changes in production. To handle this, I setup live Vercel deployments to ensure the expected changes were there.
 
-
 I also set my region as `ca-central-1` (West Canada) for my Terraform provider as this was the closest location to me. This was problematic as a certificate from the AWS Certificate Manager could only be requested from `us-east-1` in order to use it with Cloudfront. Setting up multiple providers in a convenient way in Terraform took some time but I eventually succeeded by differentiating the default and aliased providers.
-
 
 In addition, I didn't want any downtime during the transition of my manually provisioned AWS resources to the ones provisioned by Terraform. I did more research and discovered I could import manually created resources, which I did so. After importing all my resources, I used the `terraform plan` command to ensure there were minimal changes and that no resources were being destroyed.
